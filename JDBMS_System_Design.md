@@ -120,3 +120,16 @@ Further paragraphs come after blank lines.
 
 1. 使用第一人称现在时
 2. 说明代码变动的动机，以及与以前行为的对比
+
+## 使用Github-Desktop
+
+![image-20230422153041372](image-20230422153041372.png)
+
+* 先将仓库clone到本地的某个文件夹内
+* 每次写代码前先Pull代码，更新本地的文件
+* 每次写完一个功能之后：
+  * 撰写上述Commit日志
+  * Commit
+  * Push
+
+![image-20230422153217572](image-20230422153217572.png)
