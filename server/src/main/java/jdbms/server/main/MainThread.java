@@ -1,4 +1,4 @@
-package jdbms.server.threads;
+package jdbms.server.main;
 
 import jdbms.server.config.SystemConfig;
 import jdbms.server.connection.MultiClientTCPServer;

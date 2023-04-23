@@ -32,7 +32,7 @@ public class MultiClientTCPServer {
     }
 
     public void StartSingleThread() {
-        ExecutorService executorService = Executors.newFixedThreadPool(MAX_THREADS);
+        ExecutorService executorService = Executors.newCachedThreadPool();
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(SystemConfig.ServerPort);
@@ -40,7 +40,7 @@ public class MultiClientTCPServer {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("New client connected: " + clientSocket.getInetAddress().getHostName());
-                executorService.submit(new ClientHandler(clientSocket));
+                executorService.submit(new ClientHandler(clientSocket, clientSocket.getInetAddress().getHostName()));
                 Logger.Log(Importance.DEBUG, "Connection Accepted.");
             }
         } catch (IOException e) {
@@ -58,7 +58,7 @@ public class MultiClientTCPServer {
 
     public void StartMultiThread() throws IOException {
         ServerSocket serverSocket = new ServerSocket(SystemConfig.ServerPort);
-        ExecutorService threadPool = Executors.newFixedThreadPool(MAX_THREADS);
+        ExecutorService threadPool = Executors.newCachedThreadPool();
 
         System.out.println("Server started on port " + SystemConfig.ServerPort);
 
@@ -68,15 +68,17 @@ public class MultiClientTCPServer {
                 try {
                     serverSocket.setSoTimeout(ACCEPT_TIMEOUT_MS);
                     Socket clientSocket = serverSocket.accept();
-                    System.out.println("Client connected from " + clientSocket.getInetAddress().getHostAddress());
-                    threadPool.execute(new ClientHandler(clientSocket));
+
+                    String ip = clientSocket.getInetAddress().getHostAddress();
+                    Logger.Log(Importance.INFO,"Client connected from " + ip);
+                    threadPool.execute(new ClientHandler(clientSocket, ip));
                 } catch (SocketTimeoutException e) {
                     // no new client connections, continue waiting
                 } catch (IOException e) {
                     Logger.LogException(Importance.WARNING, e);
                 }
             }
-        }).start();
+        }, "Accepter Thread").start();
     }
 }
 

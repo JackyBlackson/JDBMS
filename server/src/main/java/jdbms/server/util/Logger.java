@@ -28,7 +28,7 @@ public class Logger {
             raf.seek(raf.length());
             if (SystemConfig.ShowDebugInfo || imp != Importance.DEBUG) {
                 raf.writeBytes("[" + currentTime + "] [" + Thread.currentThread().getName() + "] [" + imp.toString() + "] " + text + "\r\n");
-                System.out.println("[" + currentTime + "] [" + Thread.currentThread().getName() + "] [" + imp.toString() + "] " + text + "\r\n");
+                System.out.println("[" + currentTime + "] [" + Thread.currentThread().getName() + "] [" + imp.toString() + "] " + text);
             }
         } catch (IOException ex){
             System.out.println(ex.getLocalizedMessage());

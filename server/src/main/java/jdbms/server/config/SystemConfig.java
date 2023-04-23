@@ -13,6 +13,7 @@ import java.util.Properties;
 public class SystemConfig {
     public static Integer ServerPort = 8080;
     public static boolean ShowDebugInfo = false;
+    public static int ClientLoginTimeOut = 64000;
 
     /**
      * 从文件读取系统配置文件
@@ -27,5 +28,9 @@ public class SystemConfig {
         ////////读取配置文件//////
         ShowDebugInfo       = Boolean.parseBoolean(systemProperties.getProperty("ShowDebugInfo"));
         ServerPort          = Integer.parseInt(systemProperties.getProperty("ServerPort"));
+        ClientLoginTimeOut  = Integer.parseInt(systemProperties.getProperty("ClientLoginTimeOut"));
+        ///////读取  结束////////
+
+        bufferedReader.close();
     }
 }
