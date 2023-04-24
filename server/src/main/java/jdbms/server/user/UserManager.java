@@ -7,12 +7,13 @@ package jdbms.server.user;
  */
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UserManager {
 
     private static volatile UserManager instance = null;
 
-    private static Map<String, User> users = new HashMap<>();
+    private static Map<String, User> users = new ConcurrentHashMap<>();
 
     private UserManager() {}
 

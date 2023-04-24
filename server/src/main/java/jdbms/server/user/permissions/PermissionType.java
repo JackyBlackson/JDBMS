@@ -9,5 +9,6 @@ public enum PermissionType{
     READ,
     INSERT,
     ALTER,
-    DELETE
+    DELETE,
+    ADMIN
 }

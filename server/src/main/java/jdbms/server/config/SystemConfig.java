@@ -14,6 +14,7 @@ public class SystemConfig {
     public static Integer ServerPort = 8080;
     public static boolean ShowDebugInfo = false;
     public static int ClientLoginTimeOut = 64000;
+    public static int VarCharMaxLong = 256;
 
     /**
      * 从文件读取系统配置文件
@@ -29,6 +30,7 @@ public class SystemConfig {
         ShowDebugInfo       = Boolean.parseBoolean(systemProperties.getProperty("ShowDebugInfo"));
         ServerPort          = Integer.parseInt(systemProperties.getProperty("ServerPort"));
         ClientLoginTimeOut  = Integer.parseInt(systemProperties.getProperty("ClientLoginTimeOut"));
+        VarCharMaxLong      = Integer.parseInt(systemProperties.getProperty("VarCharMaxLong"));
         ///////读取  结束////////
 
         bufferedReader.close();

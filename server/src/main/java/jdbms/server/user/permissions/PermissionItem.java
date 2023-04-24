@@ -10,4 +10,5 @@ public class PermissionItem {
     public boolean INSERT = false;
     public boolean ALTER = false;
     public boolean DELETE = false;
+    public boolean ADMIN = false;
 }

@@ -37,6 +37,7 @@ public class Permission {
                 case INSERT: return this.PermissionList.get(name).INSERT;
                 case ALTER: return this.PermissionList.get(name).ALTER;
                 case DELETE: return this.PermissionList.get(name).DELETE;
+                case ADMIN: return this.PermissionList.get(name).ADMIN;
             }
         } else {    //没有这个数据库或者表的权限记录
             return null;
@@ -56,6 +57,7 @@ public class Permission {
             case INSERT: this.PermissionList.get(name).INSERT = perm;
             case ALTER: this.PermissionList.get(name).ALTER = perm;
             case DELETE: this.PermissionList.get(name).DELETE = perm;
+            case ADMIN: this.PermissionList.get(name).ADMIN = perm;
         }
     }
 }
